@@ -8,13 +8,22 @@ class ActivityFeed extends StatefulWidget {
 class _ActivityFeedState extends State<ActivityFeed> {
   @override
   Widget build(BuildContext context) {
-    return Text('Activity Feed');
+    return Center(
+        child: Text(
+      'Activity Feed',
+      style: TextStyle(fontSize: 20, fontFamily: "Signatra"),
+    ));
   }
 }
 
 class ActivityFeedItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Text('Activity Feed Item');
+    return Center(
+      child: Text(
+        'Activity Feed Item',
+        style: TextStyle(fontSize: 20, fontFamily: "Signatra"),
+      ),
+    );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:socialtutorial/widgets/header.dart';
 
 class Timeline extends StatefulWidget {
   @override
@@ -8,6 +9,14 @@ class Timeline extends StatefulWidget {
 class _TimelineState extends State<Timeline> {
   @override
   Widget build(context) {
-    return Text("Timeline");
+    return Scaffold(
+      appBar: header(),
+      body: Center(
+        child: Text(
+          "Timeline",
+          style: TextStyle(fontSize: 20, fontFamily: "Signatra"),
+        ),
+      ),
+    );
   }
 }

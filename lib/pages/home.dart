@@ -1,6 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:socialtutorial/pages/activity_feed.dart';
+import 'package:socialtutorial/pages/profile.dart';
+import 'package:socialtutorial/pages/search.dart';
+import 'package:socialtutorial/pages/timeline.dart';
+import 'package:socialtutorial/pages/upload.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -11,6 +16,8 @@ class _HomeState extends State<Home> {
   final googleSignIn = GoogleSignIn();
   bool isAuth = false;
   GoogleSignInAccount user;
+  PageController pageController;
+  int pageIndex = 0;
   login() {
     googleSignIn.signIn();
   }
@@ -22,6 +29,7 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
+    pageController = PageController();
     googleSignIn.onCurrentUserChanged.listen((account) {
       handleSignIn(account);
       // check for login errors
@@ -54,61 +62,64 @@ class _HomeState extends State<Home> {
     }
   }
 
+  onPageChanged(int pageIndex) {
+    setState(() {
+      this.pageIndex = pageIndex;
+    });
+  }
+
+  onTap(int pageIndex) {
+    if (pageController.hasClients) {
+      pageController.jumpToPage(pageIndex);
+    }
+  }
+
+  @override
+  void dispose() {
+    pageController.dispose();
+    super.dispose();
+  }
+
   // Reauthenticate user
 
   Scaffold buildAuthScreen() {
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-              colors: [
-                Theme.of(context).primaryColor,
-                Theme.of(context).accentColor
-              ]),
-        ),
-        alignment: Alignment.center,
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                height: 100,
-                width: 100,
-                child: Container(
-                    width: 190.0,
-                    height: 190.0,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          fit: BoxFit.fill,
-                          image: NetworkImage(
-                            "${user.photoUrl}",
-                          ),
-                        ))),
-              ),
-              SizedBox(height: 40),
-              Text(
-                '${user.displayName}',
-                style: TextStyle(
-                  fontFamily: "Signatra",
-                  fontSize: 30,
-                  color: Colors.white,
-                ),
-              ),
-              SizedBox(height: 40),
-              Text(
-                'Welcome to SocialNet',
-                style: TextStyle(
-                  fontFamily: "Signatra",
-                  fontSize: 50,
-                  color: Colors.black,
-                ),
-              ),
-              SizedBox(height: 40),
-              logoutButton()
-            ]),
+      body: PageView(
+        children: [
+          Timeline(),
+          ActivityFeed(),
+          Upload(),
+          Search(),
+          Profile(),
+        ],
+        controller: pageController,
+        onPageChanged: onPageChanged,
+        physics: NeverScrollableScrollPhysics(),
+      ),
+      bottomNavigationBar: CupertinoTabBar(
+        currentIndex: pageIndex,
+        onTap: onTap,
+        activeColor: Theme.of(context).primaryColor,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.whatshot),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.notifications_active),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.photo_camera,
+              size: 35.0,
+            ),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle),
+          ),
+        ],
       ),
     );
   }

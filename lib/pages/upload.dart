@@ -8,6 +8,10 @@ class Upload extends StatefulWidget {
 class _UploadState extends State<Upload> {
   @override
   Widget build(BuildContext context) {
-    return Text("Upload");
+    return Center(
+        child: Text(
+      "Upload",
+      style: TextStyle(fontSize: 20, fontFamily: "Signatra"),
+    ));
   }
 }
