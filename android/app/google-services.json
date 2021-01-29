@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "205558572766",
+    "project_id": "socialapp-57516",
+    "storage_bucket": "socialapp-57516.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:205558572766:android:c90db8884c28d743a8844f",
+        "android_client_info": {
+          "package_name": "com.creolben.socialapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "205558572766-ovdmoofv2onukh5tebkshgangikih3uq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.creolben.socialapp",
+            "certificate_hash": "aa1932cb7d71bcdbe6389d29422f3325400eba15"
+          }
+        },
+        {
+          "client_id": "205558572766-49fmspkeret3te7i2odjs1rtid6i7qa6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4eSYpFh6vNXqGivBLVRB_3JeuOWNaMvM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "205558572766-49fmspkeret3te7i2odjs1rtid6i7qa6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "205558572766-gdg78m52qtbu1btigkfkf68gfigf7jlg.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.creolben.socialapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
