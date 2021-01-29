@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -108,18 +107,19 @@ class _HomeState extends State<Home> {
                 ),
               ),
               SizedBox(height: 40),
-              GestureDetector(
-                child: Text(
-                  'Logout',
-                  style: TextStyle(fontSize: 20, fontFamily: "Signatra"),
-                ),
-                onTap: () {
-                  logout();
-                },
-              )
+              logoutButton()
             ]),
       ),
     );
+  }
+
+  Widget logoutButton() {
+    return ElevatedButton(
+        onPressed: () => logout(),
+        child: Text(
+          'Logout',
+          style: TextStyle(fontSize: 20, fontFamily: "Signatra"),
+        ));
   }
 
   Scaffold buildUnAuthScreen() {
