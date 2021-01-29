@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 
-AppBar header() {
+AppBar header(context, {bool isAppTitle = true, titleText = ""}) {
   return AppBar(
     title: Text(
-      "Home",
-      style: TextStyle(fontSize: 20, fontFamily: "Signatra"),
+      isAppTitle ? "Social App" : titleText,
+      style: TextStyle(
+        fontSize: isAppTitle ? 50 : 22,
+        fontFamily: isAppTitle ? "Signatra" : "",
+      ),
     ),
     centerTitle: true,
+    backgroundColor: Theme.of(context).accentColor,
   );
 }

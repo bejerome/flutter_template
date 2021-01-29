@@ -10,7 +10,7 @@ class _TimelineState extends State<Timeline> {
   @override
   Widget build(context) {
     return Scaffold(
-      appBar: header(),
+      appBar: header(context),
       body: Center(
         child: Text(
           "Timeline",
