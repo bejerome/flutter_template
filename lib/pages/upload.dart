@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:socialtutorial/widgets/header.dart';
 
 class Upload extends StatefulWidget {
   @override
@@ -8,10 +9,13 @@ class Upload extends StatefulWidget {
 class _UploadState extends State<Upload> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: Text(
-      "Upload",
-      style: TextStyle(fontSize: 20, fontFamily: "Signatra"),
-    ));
+    return Scaffold(
+        appBar: header(context, titleText: "Upload"),
+        body: Center(
+          child: Text(
+            'photos',
+            style: TextStyle(fontSize: 20, fontFamily: "Signatra"),
+          ),
+        ));
   }
 }
